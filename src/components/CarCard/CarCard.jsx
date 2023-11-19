@@ -18,16 +18,20 @@ const CarCard = ({ car }) => {
     address,
   } = car;
 
+  const parseAddress = address => {
+    // eslint-disable-next-line no-unused-vars
+    const [_, city, country] = address.split(', ');
+    return { city, country };
+  };
+
   const dispatch = useDispatch();
   const favoriteCars = useSelector(selectFavoriteCars);
   const isFavorite = favoriteCars.find(favorCar => favorCar.id === car.id);
 
   const isSwitchFavorite = () => {
-    if (!isFavorite) {
-      dispatch(addFavoriteCar(car));
-      return;
-    }
-    dispatch(deleteFavoriteCar(car));
+    if (!isFavorite) dispatch(addFavoriteCar(car));
+
+    if (isFavorite) dispatch(deleteFavoriteCar(car));
   };
 
   return (
@@ -52,8 +56,8 @@ const CarCard = ({ car }) => {
         </h2>
         <p>{rentalPrice}</p>
         <div>
-          {address.replace(/,/g, ' |')} | {rentalCompany} | {make} | {model} |{' '}
-          {type} | {id} | {accessories[0]}
+          {address} | {rentalCompany} | {make} | {model} | {type} | {id} |{' '}
+          {accessories[0]}
         </div>
       </div>
     </>
