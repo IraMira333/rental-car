@@ -36,7 +36,7 @@ const carSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(getCars.fulfilled, (state, action) => {
-        if (action.payload.carsInfo.length < 12) state.isLastPage = true;
+        if (action.payload.length < 12) state.isLastPage = true;
 
         state.carsInfo = action.payload;
         state.isLoading = false;
