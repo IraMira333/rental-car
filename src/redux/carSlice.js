@@ -26,11 +26,11 @@ const carSlice = createSlice({
     addFavoriteCar(state, action) {
       state.favoriteCars.push(action.payload);
     },
-    dellFavoriteCar(state, action) {
-      const index = state.favoriteCars.findIndex(
-        car => car.id === action.payload.id
+    deleteFavoriteCar(state, action) {
+      console.log(action);
+      state.favoriteCars = state.favoriteCars.filter(
+        car => car.id !== action.payload.id
       );
-      state.favoriteCars.splice(index, 1);
     },
   },
   extraReducers: builder => {
