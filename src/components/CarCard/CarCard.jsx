@@ -2,7 +2,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addFavoriteCar, deleteFavoriteCar } from 'redux/carSlice';
 import { selectFavoriteCars } from 'redux/selectors';
 
-import sprite from '../../assets/sprite.svg';
+import {
+  CarDescription,
+  CarImage,
+  CarImgBox,
+  CarPrice,
+  CardBox,
+  CardModel,
+  CardTitle,
+} from './CarCard.styled';
+import HeartButton from './HeartButton/HeartButton';
 
 const CarCard = ({ car }) => {
   const {
@@ -18,48 +27,38 @@ const CarCard = ({ car }) => {
     address,
   } = car;
 
-  const parseAddress = address => {
-    // eslint-disable-next-line no-unused-vars
-    const [_, city, country] = address.split(', ');
-    return { city, country };
-  };
+  const cityCountry = address.split(', ').slice(-2);
 
   const dispatch = useDispatch();
   const favoriteCars = useSelector(selectFavoriteCars);
   const isFavorite = favoriteCars.find(favorCar => favorCar.id === car.id);
 
-  const isSwitchFavorite = () => {
+  const onSwitchFavorite = () => {
+    console.log(deleteFavoriteCar);
     if (!isFavorite) dispatch(addFavoriteCar(car));
-
     if (isFavorite) dispatch(deleteFavoriteCar(car));
   };
 
   return (
     <>
-      <div>
-        <img src={img} alt={` ${model}`} loading="lazy" />
-      </div>
-      <div>
-        <input
-          type="checkbox"
-          id={id}
-          checked={isFavorite}
-          onChange={isSwitchFavorite}
-        />
-        <svg width={18} height={18}>
-          <use href={sprite + '#like'}></use>
-        </svg>
-      </div>
-      <div>
-        <h2>
-          {make} <span>{model}</span>, {year}
-        </h2>
-        <p>{rentalPrice}</p>
-        <div>
-          {address} | {rentalCompany} | {make} | {model} | {type} | {id} |{' '}
+      <CardBox>
+        <CarImgBox>
+          <CarImage src={img} alt={` ${model}`} loading="lazy" />
+          <HeartButton $isFavorite={isFavorite} onClick={onSwitchFavorite} />
+        </CarImgBox>
+        <CardTitle>
+          <CardModel>
+            {make} <span>{model}</span>, {year}
+          </CardModel>
+          <CarPrice>{rentalPrice}</CarPrice>
+        </CardTitle>
+        <CarDescription>
+          {cityCountry[0]} <span>|</span> {cityCountry[1]} <span>|</span>{' '}
+          {rentalCompany} <span>|</span> {make} <span>|</span> {model}{' '}
+          <span>|</span> {type} <span>|</span> {id} <span>|</span>{' '}
           {accessories[0]}
-        </div>
-      </div>
+        </CarDescription>
+      </CardBox>
     </>
   );
 };
