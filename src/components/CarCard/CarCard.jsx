@@ -10,8 +10,10 @@ import {
   CardBox,
   CardModel,
   CardTitle,
+  HeartButton,
+  IconFavoriteHeart,
+  IconHeart,
 } from './CarCard.styled';
-import HeartButton from './HeartButton/HeartButton';
 
 const CarCard = ({ car }) => {
   const {
@@ -34,7 +36,7 @@ const CarCard = ({ car }) => {
   const isFavorite = favoriteCars.find(favorCar => favorCar.id === car.id);
 
   const onSwitchFavorite = () => {
-    console.log(deleteFavoriteCar);
+    console.log(isFavorite);
     if (!isFavorite) dispatch(addFavoriteCar(car));
     if (isFavorite) dispatch(deleteFavoriteCar(car));
   };
@@ -44,7 +46,13 @@ const CarCard = ({ car }) => {
       <CardBox>
         <CarImgBox>
           <CarImage src={img} alt={` ${model}`} loading="lazy" />
-          <HeartButton $isFavorite={isFavorite} onClick={onSwitchFavorite} />
+          <HeartButton onClick={onSwitchFavorite}>
+            {isFavorite ? (
+              <IconHeart width={18} height={18} />
+            ) : (
+              <IconFavoriteHeart width={18} height={18} />
+            )}
+          </HeartButton>
         </CarImgBox>
         <CardTitle>
           <CardModel>

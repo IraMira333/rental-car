@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import { FaHeart, FaRegHeart } from 'react-icons/fa';
+
+// <FaRegHeart /> <FaHeart />
 
 export const CardBox = styled.div`
   display: flex;
@@ -19,6 +22,29 @@ export const CarImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+`;
+export const HeartButton = styled.button`
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  padding: 0;
+  line-height: 0;
+  background-color: transparent;
+  border: none;
+`;
+
+export const IconHeart = styled(FaHeart)`
+  fill: #3470ff;
+  stroke: #3470ff;
+  width: 100%;
+  height: 100%;
+`;
+
+export const IconFavoriteHeart = styled(FaRegHeart)`
+  fill: transparent;
+  stroke: #ffffffcc;
+  width: 100%;
+  height: 100%;
 `;
 
 export const CardTitle = styled.div`
