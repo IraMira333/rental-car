@@ -1,5 +1,13 @@
-import React from 'react';
+import { useSelector } from 'react-redux';
+import { selectFavoriteCars } from 'redux/selectors';
+import CarsGrid from 'components/CarsGrid/CarsGrid';
 
 export default function FavoritePage() {
-  return <h2>Favorite Cars</h2>;
+  const favoriteCars = useSelector(selectFavoriteCars);
+
+  return (
+    <>
+      <CarsGrid cars={favoriteCars} />
+    </>
+  );
 }
