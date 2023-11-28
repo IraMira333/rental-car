@@ -36,7 +36,6 @@ const CarCard = ({ car }) => {
   const isFavorite = favoriteCars.find(favorCar => favorCar.id === car.id);
 
   const onSwitchFavorite = () => {
-    console.log(isFavorite);
     if (!isFavorite) dispatch(addFavoriteCar(car));
     if (isFavorite) dispatch(deleteFavoriteCar(car));
   };

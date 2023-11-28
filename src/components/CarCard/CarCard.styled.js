@@ -7,6 +7,7 @@ export const CardBox = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
+  width: 274px;
 `;
 
 export const CarImgBox = styled.div`
@@ -31,18 +32,17 @@ export const HeartButton = styled.button`
   line-height: 0;
   background-color: transparent;
   border: none;
+  cursor: pointer;
 `;
 
 export const IconHeart = styled(FaHeart)`
   fill: #3470ff;
-  stroke: #3470ff;
   width: 100%;
   height: 100%;
 `;
 
 export const IconFavoriteHeart = styled(FaRegHeart)`
-  fill: transparent;
-  stroke: #ffffffcc;
+  fill: #ffffffcc;
   width: 100%;
   height: 100%;
 `;
