@@ -8,6 +8,9 @@ export const CardBox = styled.div`
   flex-direction: column;
   height: 100%;
   width: 274px;
+
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 export const CarImgBox = styled.div`
@@ -71,7 +74,6 @@ export const CarPrice = styled.p`
   color: #121417;
 `;
 export const CarDescription = styled.div`
-  margin-top: 8px;
   max-height: 40px;
   color: #12141780;
   font-weight: 400;
@@ -80,5 +82,27 @@ export const CarDescription = styled.div`
 
   & span {
     color: #12141710;
+  }
+`;
+
+export const CarDetailButton = styled.button`
+  justify-self: end;
+  margin-top: 28px;
+  padding-block: 12px;
+  padding-inline: 99px;
+
+  font-family: Manrope;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.43; /* 142.857% */
+
+  color: #ffffff;
+  background-color: #3470ff;
+  border-radius: 12px;
+  border: none;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    background-color: #0b44cd;
   }
 `;

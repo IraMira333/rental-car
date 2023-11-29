@@ -1,9 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
 import { addFavoriteCar, deleteFavoriteCar } from 'redux/carSlice';
 import { selectFavoriteCars } from 'redux/selectors';
 
 import {
   CarDescription,
+  CarDetailButton,
   CarImage,
   CarImgBox,
   CarPrice,
@@ -14,6 +16,7 @@ import {
   IconFavoriteHeart,
   IconHeart,
 } from './CarCard.styled';
+import Modal from 'components/Modal/Modal';
 
 const CarCard = ({ car }) => {
   const {
@@ -29,7 +32,10 @@ const CarCard = ({ car }) => {
     address,
   } = car;
 
-  const cityCountry = address.split(', ').slice(-2);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const handeOnDetail = () => setIsModalOpen(!isModalOpen);
+
+  export const cityCountry = address.split(', ').slice(-2);
 
   const dispatch = useDispatch();
   const favoriteCars = useSelector(selectFavoriteCars);
@@ -61,11 +67,14 @@ const CarCard = ({ car }) => {
         </CardTitle>
         <CarDescription>
           {cityCountry[0]} <span>|</span> {cityCountry[1]} <span>|</span>{' '}
-          {rentalCompany} <span>|</span> {make} <span>|</span> {model}{' '}
-          <span>|</span> {type} <span>|</span> {id} <span>|</span>{' '}
-          {accessories[0]}
+          {rentalCompany} <br /> {type} <span>|</span> {make} <span>|</span>{' '}
+          {id} <span>|</span> {accessories[0]}
         </CarDescription>
+        <CarDetailButton type="button" onClick={() => handeOnDetail(car)}>
+          Learn more
+        </CarDetailButton>
       </CardBox>
+      {isModalOpen && <Modal closeModal={handeOnDetail}></Modal>}
     </>
   );
 };
