@@ -3,13 +3,13 @@ import { getCarsAPI } from 'services/API';
 
 export const getCars = createAsyncThunk(
   'cars/getCars',
-  async (_, { rejectWithValue }) => {
-    // const { page, mileageFrom, mileageTo, price } = params;
-    //console.log(params);
+  async (params, { rejectWithValue }) => {
+    const { page } = params;
+    console.log(params);
     try {
-      const cars = await getCarsAPI();
-
-      return cars;
+      const carsInfo = await getCarsAPI(params);
+      console.log(carsInfo);
+      return { carsInfo, page };
     } catch (error) {
       console.log(error);
       return rejectWithValue(error);
