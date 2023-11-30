@@ -17,6 +17,7 @@ import {
   IconHeart,
 } from './CarCard.styled';
 import Modal from 'components/Modal/Modal';
+import DetailsAboutTheCar from 'components/DetailsAboutTheCar/DetailsAboutTheCar';
 
 const CarCard = ({ car }) => {
   const {
@@ -35,7 +36,7 @@ const CarCard = ({ car }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handeOnDetail = () => setIsModalOpen(!isModalOpen);
 
-  export const cityCountry = address.split(', ').slice(-2);
+  const cityCountry = address.split(', ').slice(-2);
 
   const dispatch = useDispatch();
   const favoriteCars = useSelector(selectFavoriteCars);
@@ -74,7 +75,11 @@ const CarCard = ({ car }) => {
           Learn more
         </CarDetailButton>
       </CardBox>
-      {isModalOpen && <Modal closeModal={handeOnDetail}></Modal>}
+      {isModalOpen && (
+        <Modal closeModal={handeOnDetail}>
+          <DetailsAboutTheCar car={car} />
+        </Modal>
+      )}
     </>
   );
 };
