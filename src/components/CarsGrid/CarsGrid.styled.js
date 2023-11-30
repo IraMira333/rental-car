@@ -7,4 +7,5 @@ export const CarsGridStyle = styled.ul`
   grid-row-gap: 50px;
   margin-bottom: 100px;
   list-style: none;
+  padding: 20px;
 `;

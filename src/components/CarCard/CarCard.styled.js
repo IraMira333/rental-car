@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
 
-// <FaRegHeart /> <FaHeart />
-
 export const CardBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -59,7 +57,6 @@ export const CardTitle = styled.div`
 export const CardModel = styled.h2`
   font-size: 16px;
   font-weight: 500;
-  line-height: 1.5; /* 150% */
   color: #121417;
 
   & span {
@@ -70,15 +67,12 @@ export const CardModel = styled.h2`
 export const CarPrice = styled.p`
   font-size: 16px;
   font-weight: 500;
-  line-height: 1.5; /* 150% */
+
   color: #121417;
 `;
 export const CarDescription = styled.div`
   max-height: 40px;
   color: #12141780;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 1.5;
 
   & span {
     color: #12141710;

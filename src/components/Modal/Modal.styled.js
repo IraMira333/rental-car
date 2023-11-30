@@ -15,6 +15,7 @@ export const BackDrop = styled.div`
 
 export const ModalContainer = styled.div`
   position: relative;
+
   padding: 40px;
   width: 541px;
   background-color: #fff;
@@ -30,7 +31,7 @@ export const CloseButton = styled.button`
   outline: none;
   font-size: 24px;
   padding: 0;
-  transition: color 500px ease-in-out;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   :hover {
     color: #3470ff;
