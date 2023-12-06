@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { NumericFormat } from 'react-number-format';
 
 export const ImageBox = styled.div`
   width: 461px;
@@ -85,6 +86,18 @@ export const ConditionItem = styled.li`
     font-weight: 600;
     color: #3470ff;
   }
+`;
+export const MileageData = styled(NumericFormat)`
+  width: 50px;
+  font-family: Manrope;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.5; /* 150% */
+  letter-spacing: -0.24px;
+  color: #3470ff;
+  background-color: transparent;
+  border: none;
 `;
 
 export const RentCarButton = styled.button`

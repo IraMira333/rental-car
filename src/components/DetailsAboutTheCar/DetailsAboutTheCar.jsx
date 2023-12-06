@@ -5,6 +5,7 @@ import {
   Description,
   Image,
   ImageBox,
+  MileageData,
   ModalSubTitle,
   ModalTitle,
   RentCarButton,
@@ -100,7 +101,7 @@ const DetailsAboutTheCar = ({ car }) => {
             <ConditionItem key={idx}>{text}</ConditionItem>
           ))}
           <ConditionItem>
-            Mileage: <span>{mileage.toLocaleString('en-US')}</span>
+            Mileage: <MileageData value={mileage} thousandSeparator="," />
           </ConditionItem>
           <ConditionItem>
             Price: <span>{rentalPrice}</span>
