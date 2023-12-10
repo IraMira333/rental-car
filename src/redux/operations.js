@@ -1,13 +1,20 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { filterByMileage, filterByPrice } from 'helpers/helpers';
 import { getCarsAPI } from 'services/API';
 
 export const getCars = createAsyncThunk(
   'cars/getCars',
   async (params, { rejectWithValue }) => {
-    const { page } = params;
+    const { page, mileageFrom, mileageTo, price } = params;
 
     try {
-      const carsInfo = await getCarsAPI(params);
+      const result = await getCarsAPI(params);
+      let carsInfo = result;
+
+      if (mileageFrom || mileageTo)
+        carsInfo = filterByMileage(carsInfo, mileageFrom, mileageTo);
+
+      if (price) carsInfo = filterByPrice(carsInfo, price);
 
       return { carsInfo, page };
     } catch (error) {
