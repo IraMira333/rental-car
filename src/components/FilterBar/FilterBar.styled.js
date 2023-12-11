@@ -3,12 +3,15 @@ import { Field, Form } from 'formik';
 
 export const FilterLineBox = styled.div`
   margin-bottom: 44px;
-  max-width: 859px;
+  max-width: 899px;
   padding: 20px 20px 0 20px;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 export const FormBox = styled(Form)`
   display: flex;
+
   justify-content: center;
   align-items: end;
   margin-bottom: 50px;
@@ -36,17 +39,11 @@ export const FilterItemBox = styled.div`
   }
 `;
 
-export const SelectField = styled(Field)`
-  padding: 11px 18px;
-  font-family: Manrope;
+export const SelectField = styled.div`
   font-size: 18px;
   font-weight: 500;
   line-height: 1.11; /* 111.111% */
   color: #121417;
-  background-color: #f7f7fb;
-  border-radius: 14px;
-  border: none;
-  outline: none;
 `;
 
 export const MileageBox = styled.div`
