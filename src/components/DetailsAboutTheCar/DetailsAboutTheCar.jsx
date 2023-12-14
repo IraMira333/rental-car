@@ -34,7 +34,6 @@ const DetailsAboutTheCar = ({ car }) => {
 
   const cityCountry = address.split(', ').slice(-2);
   const conditions = rentalConditions.split('\n');
-  console.log(conditions);
 
   return (
     <div>
