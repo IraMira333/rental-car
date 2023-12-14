@@ -1,6 +1,6 @@
 import Select from 'react-select';
 
-const CustomSelect = ({ onChange, options, value }) => {
+const CustomSelect = ({ onChange, placeholder, options, value }) => {
   const defaultValue = (options, value) => {
     return options ? options.find(option => option.value === value) : '';
   };
@@ -8,6 +8,7 @@ const CustomSelect = ({ onChange, options, value }) => {
   return (
     <Select
       options={options}
+      placeholder={placeholder}
       className="custom-select custom-select-menu"
       onChange={value => onChange(value)}
       value={defaultValue(options, value)}
@@ -24,6 +25,12 @@ const CustomSelect = ({ onChange, options, value }) => {
           border: 'none',
           output: 'none',
           height: '48px',
+        }),
+        placeholder: base => ({
+          ...base,
+          color: '#121417',
+          paddingLeft: '10px',
+          margin: '0',
         }),
       }}
     />
