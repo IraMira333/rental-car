@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Field, Form } from 'formik';
+import { NumericFormat } from 'react-number-format';
 
 export const FilterLineBox = styled.div`
   margin-bottom: 44px;
@@ -70,19 +71,26 @@ export const Label = styled.p`
   color: #121417;
 `;
 
-export const InputMileage = styled(Field)`
+export const InputMileage = styled.div`
   padding: 14px 24px;
-  padding-left: ${props => props.padding};
+
   width: 160px;
   height: 48px;
+
+  background-color: #f7f7fb;
+
+  border: none;
+  outline: none;
+`;
+
+export const FormattedMileage = styled(NumericFormat)`
   font-family: Manrope;
   font-size: 18px;
   font-weight: 500;
   line-height: 1.11; /* 111.111% */
 
   color: #121417;
-  background-color: #f7f7fb;
-
+  background-color: transparent;
   border: none;
   outline: none;
 `;

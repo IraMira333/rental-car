@@ -1,10 +1,11 @@
 import { CARSBRANDARRAY } from 'constants/CARSBRANDARRAY';
-import { Formik, useFormik } from 'formik';
+import { Formik, useField, useFormik } from 'formik';
 import { createArrayWithStep } from 'helpers/helpers';
 import {
   FilterItemBox,
   FilterLineBox,
   FormBox,
+  FormattedMileage,
   InputMileage,
   Label,
   MileageBox,
@@ -13,12 +14,12 @@ import {
   SelectField,
 } from './FilterBar.styled';
 import CustomSelect from './Select/Select';
-//import { NumericFormat } from 'react-number-format';
 
 const brandOptions = CARSBRANDARRAY.map(make => ({
   value: make,
   label: make,
 }));
+
 const prices = createArrayWithStep(30, 550, 10);
 const priceOptions = prices.map(price => ({
   value: price,
@@ -35,10 +36,28 @@ const FilterBar = ({ params, setParams }) => {
     },
     onSubmit: values => {
       console.log(values);
-
       setParams({ ...params, ...values, page: 1 });
     },
   });
+
+  function NumberFieldHooks(props) {
+    const { name } = props;
+    const [field] = useField(name);
+
+    return (
+      <FormattedMileage
+        {...field}
+        decimalScale={3}
+        thousandSeparator={true}
+        onValueChange={values => {
+          console.log(values);
+          const { floatValue } = values;
+
+          formik.setFieldValue(field.name, floatValue);
+        }}
+      />
+    );
+  }
 
   return (
     <FilterLineBox>
@@ -56,6 +75,7 @@ const FilterBar = ({ params, setParams }) => {
                 }}
               >
                 <CustomSelect
+                  placeholder={'All'}
                   options={brandOptions}
                   value={formik.values.make}
                   onChange={value => formik.setFieldValue('make', value.value)}
@@ -71,9 +91,10 @@ const FilterBar = ({ params, setParams }) => {
                 }}
               >
                 <CustomSelect
+                  placeholder={'To  $'}
                   options={priceOptions}
-                  value={formik.values.make}
-                  onChange={value => formik.setFieldValue('make', value.value)}
+                  value={formik.values.price}
+                  onChange={value => formik.setFieldValue('price', value.value)}
                 />
               </SelectField>
             </FilterItemBox>
@@ -84,31 +105,37 @@ const FilterBar = ({ params, setParams }) => {
                 <MileageWrapper>
                   <Label>From</Label>
                   <InputMileage
-                    name="mileageFrom"
-                    type="number"
-                    min="0"
-                    onChange={formik.handleChange}
-                    value={formik.values.mileageFrom}
-                    padding="70px"
-                  />
+                    style={{
+                      paddingLeft: '70px',
+                    }}
+                  >
+                    <NumberFieldHooks
+                      name="mileageFrom"
+                      type="number"
+                      min="0"
+                      value={formik.values.mileageFrom}
+                    />
+                  </InputMileage>
                 </MileageWrapper>
                 <MileageWrapper>
                   <Label>To</Label>
                   <InputMileage
-                    name="mileageTo"
-                    type="number"
-                    min="0"
-                    onChange={formik.handleChange}
-                    value={formik.values.mileageTo}
-                    padding="48px"
-                  />
+                    style={{
+                      paddingLeft: '48px',
+                    }}
+                  >
+                    <NumberFieldHooks
+                      name="mileageTo"
+                      type="number"
+                      min="0"
+                      value={formik.values.mileageTo}
+                    />
+                  </InputMileage>
                 </MileageWrapper>
               </MileageBox>
             </FilterItemBox>
 
-            <SearchButton type="submit" disabled={isSubmitting}>
-              Search
-            </SearchButton>
+            <SearchButton type="submit">Search</SearchButton>
           </FormBox>
         )}
       </Formik>
