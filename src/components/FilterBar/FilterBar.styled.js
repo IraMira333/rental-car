@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Field, Form } from 'formik';
+import { Form } from 'formik';
 import { NumericFormat } from 'react-number-format';
 
 export const FilterLineBox = styled.div`
@@ -45,6 +45,15 @@ export const SelectField = styled.div`
   font-weight: 500;
   line-height: 1.11; /* 111.111% */
   color: #121417;
+`;
+
+export const FormattedPriceBox = styled.div`
+  width: 68px;
+  position: absolute;
+  top: 14px;
+  left: 18px;
+  background-color: #f7f7fb;
+  pointer-events: none;
 `;
 
 export const MileageBox = styled.div`

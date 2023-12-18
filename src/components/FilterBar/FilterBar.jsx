@@ -6,6 +6,7 @@ import {
   FilterLineBox,
   FormBox,
   FormattedMileage,
+  FormattedPriceBox,
   InputMileage,
   Label,
   MileageBox,
@@ -14,6 +15,7 @@ import {
   SelectField,
 } from './FilterBar.styled';
 import CustomSelect from './Select/Select';
+import { useState } from 'react';
 
 const brandOptions = CARSBRANDARRAY.map(make => ({
   value: make,
@@ -59,85 +61,91 @@ const FilterBar = ({ params, setParams }) => {
     );
   }
 
+  const [formattedPrice, setFormattedPrice] = useState('To $');
+
   return (
     <FilterLineBox>
       <Formik
         onSubmit={formik.handleSubmit}
         initialValues={formik.initialValues}
       >
-        {({ isSubmitting }) => (
-          <FormBox>
-            <FilterItemBox>
-              <label htmlFor="make">Car brand</label>
-              <SelectField
-                style={{
-                  width: '224px',
+        <FormBox>
+          <FilterItemBox>
+            <label htmlFor="make">Car brand</label>
+            <SelectField
+              style={{
+                width: '224px',
+              }}
+            >
+              <CustomSelect
+                placeholder={'All'}
+                options={brandOptions}
+                value={formik.values.make}
+                onChange={value => formik.setFieldValue('make', value.value)}
+              />
+            </SelectField>
+          </FilterItemBox>
+
+          <FilterItemBox>
+            <label htmlFor="price">Price/ 1 hour</label>
+            <SelectField
+              style={{
+                width: '125px',
+                position: 'relative',
+              }}
+            >
+              <CustomSelect
+                placeholder={'To $'}
+                options={priceOptions}
+                value={formik.values.price}
+                onChange={value => {
+                  const newPrice = `To ${value.value} $`;
+                  setFormattedPrice(newPrice);
+                  formik.setFieldValue('price', value.value);
                 }}
-              >
-                <CustomSelect
-                  placeholder={'All'}
-                  options={brandOptions}
-                  value={formik.values.make}
-                  onChange={value => formik.setFieldValue('make', value.value)}
-                />
-              </SelectField>
-            </FilterItemBox>
+              />
+              <FormattedPriceBox>{formattedPrice}</FormattedPriceBox>
+            </SelectField>
+          </FilterItemBox>
 
-            <FilterItemBox>
-              <label htmlFor="price">Price/ 1 hour</label>
-              <SelectField
-                style={{
-                  width: '125px',
-                }}
-              >
-                <CustomSelect
-                  placeholder={'To  $'}
-                  options={priceOptions}
-                  value={formik.values.price}
-                  onChange={value => formik.setFieldValue('price', value.value)}
-                />
-              </SelectField>
-            </FilterItemBox>
+          <FilterItemBox>
+            <label htmlFor="mileage">Сar mileage / km</label>
+            <MileageBox>
+              <MileageWrapper>
+                <Label>From</Label>
+                <InputMileage
+                  style={{
+                    paddingLeft: '70px',
+                  }}
+                >
+                  <NumberFieldHooks
+                    name="mileageFrom"
+                    type="number"
+                    min="0"
+                    value={formik.values.mileageFrom}
+                  />
+                </InputMileage>
+              </MileageWrapper>
+              <MileageWrapper>
+                <Label>To</Label>
+                <InputMileage
+                  style={{
+                    paddingLeft: '48px',
+                  }}
+                >
+                  <NumberFieldHooks
+                    name="mileageTo"
+                    type="number"
+                    min="0"
+                    value={formik.values.mileageTo}
+                  />
+                </InputMileage>
+              </MileageWrapper>
+            </MileageBox>
+          </FilterItemBox>
 
-            <FilterItemBox>
-              <label htmlFor="mileage">Сar mileage / km</label>
-              <MileageBox>
-                <MileageWrapper>
-                  <Label>From</Label>
-                  <InputMileage
-                    style={{
-                      paddingLeft: '70px',
-                    }}
-                  >
-                    <NumberFieldHooks
-                      name="mileageFrom"
-                      type="number"
-                      min="0"
-                      value={formik.values.mileageFrom}
-                    />
-                  </InputMileage>
-                </MileageWrapper>
-                <MileageWrapper>
-                  <Label>To</Label>
-                  <InputMileage
-                    style={{
-                      paddingLeft: '48px',
-                    }}
-                  >
-                    <NumberFieldHooks
-                      name="mileageTo"
-                      type="number"
-                      min="0"
-                      value={formik.values.mileageTo}
-                    />
-                  </InputMileage>
-                </MileageWrapper>
-              </MileageBox>
-            </FilterItemBox>
-
-            <SearchButton type="submit">Search</SearchButton>
-          </FormBox>
-        )}
+          <SearchButton type="submit">Search</SearchButton>
+        </FormBox>
       </Formik>
     </FilterLineBox>
   );

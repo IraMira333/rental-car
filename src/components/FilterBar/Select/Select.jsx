@@ -1,17 +1,16 @@
 import Select from 'react-select';
 
 const CustomSelect = ({ onChange, placeholder, options, value }) => {
-  const defaultValue = (options, value) => {
-    return options ? options.find(option => option.value === value) : '';
-  };
+  // const defaultValue = (options, value) => {
+  //   return options ? options.find(option => option.value === value) : 'Full';
+  // };
 
   return (
     <Select
       options={options}
       placeholder={placeholder}
-      className="custom-select custom-select-menu"
       onChange={value => onChange(value)}
-      value={defaultValue(options, value)}
+      // value={defaultValue(options, value)}
       styles={{
         dropdownIndicator: (base, state) => ({
           ...base,
@@ -29,8 +28,11 @@ const CustomSelect = ({ onChange, placeholder, options, value }) => {
         placeholder: base => ({
           ...base,
           color: '#121417',
-          paddingLeft: '10px',
           margin: '0',
+        }),
+        valueContainer: styles => ({
+          ...styles,
+          paddingLeft: '18px',
         }),
       }}
     />
