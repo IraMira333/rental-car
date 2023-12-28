@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom';
 import React from 'react';
 import Spiner from './Spiner/Spiner';
 import AppBar from './AppBar/AppBar';
+import Footer from './Footer/Footer';
 
 export default function Layout() {
   return (
@@ -14,6 +15,7 @@ export default function Layout() {
           <Outlet />
         </Suspense>
       </main>
+      <Footer />
     </>
   );
 }

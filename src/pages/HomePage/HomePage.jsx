@@ -70,10 +70,6 @@ export default function HomePage() {
           allowing you to focus on the moments that matter. Ready to start your
           adventure?
         </HomeP>
-        <p>
-          Reserve your rental car today and experience travel freedom with{' '}
-          <NameCar>CAR </NameCar> <NameRental>RENTAL</NameRental>.
-        </p>
       </HomePageText>
     </HomeContainer>
   );

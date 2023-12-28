@@ -3,12 +3,11 @@ import styled from 'styled-components';
 export const HomeContainer = styled.div`
   padding: 20px;
   text-align: center;
-  /* background-image: linear-gradient(
-      to right,
-      rgba(46, 47, 66, 0.7),
-      rgba(46, 47, 66, 0.1)
-    ),
-    url('./homePage.png'); */
+  background: linear-gradient(
+    to right,
+    rgba(126, 185, 224, 0.4),
+    rgba(46, 47, 66, 0.1)
+  );
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
