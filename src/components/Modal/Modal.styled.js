@@ -11,15 +11,23 @@ export const BackDrop = styled.div`
   justify-content: center;
   align-items: center;
   background-color: rgba(18, 20, 23, 0.5);
+  @media screen and (max-width: 600px) {
+    overflow-y: auto;
+  }
 `;
 
 export const ModalContainer = styled.div`
   position: relative;
-
+  outline: 1px solid red;
   padding: 40px;
-  width: 541px;
+  max-width: 541px;
   background-color: #fff;
   border-radius: 24px;
+  @media screen and (max-width: 600px) {
+    min-width: 270px;
+    padding: 10px;
+    margin-top: 60px;
+  }
 `;
 export const CloseButton = styled.button`
   position: absolute;
