@@ -7,6 +7,7 @@ import {
   HomeH4,
   HomeP,
   HomePageText,
+  ImageHome,
   NameCar,
   NameRental,
 } from './HomePage.styled';
@@ -28,7 +29,7 @@ export default function HomePage() {
           unforgettable adventure, providing you with the keys to explore your
           destination at your own pace.
         </HomeP>
-        <img src={carsFoto} alt="Cars" width="250" />
+        <ImageHome src={carsFoto} alt="Cars" />
         <HomeH3>
           Why Choose <NameCar>CAR </NameCar> <NameRental>RENTAL</NameRental> ?
         </HomeH3>

@@ -14,7 +14,6 @@ export const HomeContainer = styled.div`
   background-size: cover;
   width: 100%;
   height: 100%;
-  outline: 1px solid red;
 `;
 export const NameCar = styled.span`
   color: aliceblue;
@@ -41,8 +40,24 @@ export const NameRental = styled.span`
   }
 `;
 
+export const ImageHome = styled.img`
+  display: block;
+  max-width: 260px;
+  margin-left: auto;
+  margin-right: auto;
+  @media screen and (min-width: 400px) {
+    max-width: 360px;
+  }
+  @media screen and (min-width: 600px) {
+    max-width: 560px;
+  }
+  @media screen and (min-width: 1000px) {
+    max-width: 860px;
+  }
+`;
+
 export const HomePageText = styled.div`
-  max-width: 600px;
+  max-width: 900px;
   margin-left: auto;
   margin-right: auto;
 `;
