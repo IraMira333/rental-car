@@ -74,8 +74,9 @@ const FilterBar = ({ params, setParams }) => {
             <label htmlFor="make">Car brand</label>
             <SelectField
               style={{
-                width: '224px',
+                width: 'var(--width-brand)',
               }}
+              className="brand"
             >
               <CustomSelect
                 placeholder={'All'}
@@ -90,7 +91,7 @@ const FilterBar = ({ params, setParams }) => {
             <label htmlFor="price">Price/ 1 hour</label>
             <SelectField
               style={{
-                width: '125px',
+                width: 'var(--width-price)',
                 position: 'relative',
               }}
             >
@@ -115,7 +116,7 @@ const FilterBar = ({ params, setParams }) => {
                 <Label>From</Label>
                 <InputMileage
                   style={{
-                    paddingLeft: '70px',
+                    paddingLeft: 'var(--paddingLeft-From)',
                   }}
                 >
                   <NumberFieldHooks
@@ -130,7 +131,7 @@ const FilterBar = ({ params, setParams }) => {
                 <Label>To</Label>
                 <InputMileage
                   style={{
-                    paddingLeft: '48px',
+                    paddingLeft: 'var(--paddingLeft-To)',
                   }}
                 >
                   <NumberFieldHooks

@@ -24,6 +24,10 @@ const CustomSelect = ({ onChange, placeholder, options, value }) => {
           border: 'none',
           output: 'none',
           height: '48px',
+          '@media only screen and (max-width: 424px)': {
+            ...base['@media only screen and (max-width: 424px)'],
+            height: '38px',
+          },
         }),
         placeholder: base => ({
           ...base,
@@ -33,6 +37,10 @@ const CustomSelect = ({ onChange, placeholder, options, value }) => {
         valueContainer: styles => ({
           ...styles,
           paddingLeft: '18px',
+          '@media only screen and (max-width: 424px)': {
+            ...styles['@media only screen and (max-width: 424px)'],
+            paddingLeft: '12px',
+          },
         }),
       }}
     />

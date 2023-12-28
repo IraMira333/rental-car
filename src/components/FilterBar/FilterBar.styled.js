@@ -3,11 +3,14 @@ import { Form } from 'formik';
 import { NumericFormat } from 'react-number-format';
 
 export const FilterLineBox = styled.div`
-  margin-bottom: 44px;
+  margin-bottom: 20px;
   max-width: 899px;
   padding: 20px 20px 0 20px;
   margin-left: auto;
   margin-right: auto;
+  @media screen and (max-width: 424px) {
+    padding: 10px 10px 0 10px;
+  }
 `;
 
 export const FormBox = styled(Form)`
@@ -15,12 +18,20 @@ export const FormBox = styled(Form)`
 
   justify-content: center;
   align-items: end;
-  margin-bottom: 50px;
+
   font-family: Manrope;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.29; /* 128.571% */
   color: #8a8a89;
+  @media screen and (max-width: 899px) {
+    flex-wrap: wrap;
+    row-gap: 10px;
+    min-width: 260px;
+  }
+  @media screen and (max-width: 424px) {
+    font-size: 12px;
+  }
 
   & label {
     margin-bottom: 8px;
@@ -45,6 +56,9 @@ export const SelectField = styled.div`
   font-weight: 500;
   line-height: 1.11; /* 111.111% */
   color: #121417;
+  @media screen and (max-width: 424px) {
+    font-size: 14px;
+  }
 `;
 
 export const FormattedPriceBox = styled.div`
@@ -54,6 +68,11 @@ export const FormattedPriceBox = styled.div`
   left: 18px;
   background-color: #f7f7fb;
   pointer-events: none;
+  @media screen and (max-width: 424px) {
+    width: 48px;
+    left: 12px;
+    top: 10px;
+  }
 `;
 
 export const MileageBox = styled.div`
@@ -78,6 +97,11 @@ export const Label = styled.p`
   line-height: 1.11; /* 111.111% */
 
   color: #121417;
+  @media screen and (max-width: 424px) {
+    font-size: 14px;
+    left: 15px;
+    top: 10px;
+  }
 `;
 
 export const InputMileage = styled.div`
@@ -90,6 +114,11 @@ export const InputMileage = styled.div`
 
   border: none;
   outline: none;
+  @media screen and (max-width: 424px) {
+    width: 120px;
+    height: 38px;
+    padding: 10px 20px;
+  }
 `;
 
 export const FormattedMileage = styled(NumericFormat)`
@@ -102,6 +131,9 @@ export const FormattedMileage = styled(NumericFormat)`
   background-color: transparent;
   border: none;
   outline: none;
+  @media screen and (max-width: 424px) {
+    font-size: 14px;
+  }
 `;
 
 export const SearchButton = styled.button`
@@ -120,5 +152,9 @@ export const SearchButton = styled.button`
 
   &:hover {
     background-color: #0b44cd;
+  }
+  @media screen and (max-width: 424px) {
+    padding-block: 10px;
+    padding-inline: 64px;
   }
 `;
