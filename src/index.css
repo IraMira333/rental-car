@@ -1,5 +1,21 @@
 @import-normalize; /* bring in normalize.css styles */
+:root {
+  --width-brand: 224px;
+  --width-price: 125px;
+  --paddingLeft-From: 70px;
+  --paddingLeft-To: 48px;
+  --spanName-Size: 24px;
+}
 
+@media screen and (max-width: 424px) {
+  :root {
+    --width-brand: 154px;
+    --width-price: 105px;
+    --paddingLeft-From: 50px;
+    --paddingLeft-To: 32px;
+    --spanName-Size: 18px;
+  }
+}
 body {
   margin: 0;
   font-family: 'Manrope', sans-serif;
