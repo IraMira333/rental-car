@@ -4,7 +4,7 @@ import { IoClose } from 'react-icons/io5';
 
 import { ModalContainer, BackDrop, CloseButton } from './Modal.styled';
 
-const Modal = ({ closeModal, children }) => {
+const Modal = ({ closeModal, children, style }) => {
   const handleBackDropClick = e => {
     if (e.currentTarget === e.target) closeModal();
   };
@@ -26,7 +26,7 @@ const Modal = ({ closeModal, children }) => {
 
   return createPortal(
     <BackDrop onClick={handleBackDropClick}>
-      <ModalContainer>
+      <ModalContainer style={style}>
         <CloseButton onClick={closeModal}>
           <IoClose width={24} height={24} />
         </CloseButton>

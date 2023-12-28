@@ -9,7 +9,7 @@ export const BackDrop = styled.div`
 
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   background-color: rgba(18, 20, 23, 0.5);
   @media screen and (max-width: 600px) {
     overflow-y: auto;
@@ -18,15 +18,14 @@ export const BackDrop = styled.div`
 
 export const ModalContainer = styled.div`
   position: relative;
-  outline: 1px solid red;
+
   padding: 40px;
   max-width: 541px;
   background-color: #fff;
   border-radius: 24px;
   @media screen and (max-width: 600px) {
-    min-width: 270px;
+    min-width: 200px;
     padding: 10px;
-    margin-top: 60px;
   }
 `;
 export const CloseButton = styled.button`

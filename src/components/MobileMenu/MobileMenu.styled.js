@@ -10,5 +10,4 @@ export const MenuMob = styled.div`
   flex-direction: column;
   align-items: flex-end;
   margin-top: 25px;
-  outline: 1px solid green;
 `;
