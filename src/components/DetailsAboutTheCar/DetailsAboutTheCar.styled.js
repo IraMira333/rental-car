@@ -2,11 +2,15 @@ import styled from 'styled-components';
 import { NumericFormat } from 'react-number-format';
 
 export const ImageBox = styled.div`
-  width: 461px;
+  max-width: 461px;
   height: 248px;
   overflow: hidden;
   border-radius: 14px;
   margin-bottom: 14px;
+  @media screen and (max-width: 600px) {
+    min-width: 280px;
+    max-height: 248px;
+  }
 `;
 export const Image = styled.img`
   height: 100%;
@@ -103,6 +107,8 @@ export const MileageData = styled(NumericFormat)`
 export const RentCarButton = styled.button`
   display: block;
   justify-self: end;
+  margin-left: auto;
+  margin-right: auto;
   width: 168px;
   padding: 12px 50px;
   margin-top: 16px;
